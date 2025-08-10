@@ -13,12 +13,12 @@
                     <div class="media align-items-end profile-head d-flex">
                         <div class="profile mr-3">
                             <img
-                                src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+                                src="{{ $customer->image ? asset($customer->image) : asset('default-images/ben.png') }}"
                                 alt="..." width="130" class="rounded mb-2 img-thumbnail">
                         </div>
                         <div class="media-body mb-5 text-white">
-                            <h4 class="mt-0 mb-0">Jhon Deo</h4>
-                            <p class="small mb-4">jhon@gmail.com</p>
+                            <h4 class="mt-0 mb-0">{{ $customer->first_name }} {{ $customer->last_name }}</h4>
+                            <p class="small mb-4">{{ $customer->email }}</p>
                         </div>
                     </div>
                 </div>
@@ -29,28 +29,31 @@
                             <tbody>
                                 <tr>
                                     <td style="width: 250px;">First Name</td>
-                                    <td>Jhon</td>
+                                    <td>{{ $customer->first_name }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 250px;">Last Name</td>
-                                    <td>Deo</td>
+                                    <td>{{ $customer->last_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 250px;">Date of Birth</td>
+                                    <td>{{ $customer->date_of_birth }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 250px;">Email</td>
-                                    <td>Jhon@gmail.com</td>
+                                    <td>{{ $customer->email }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 250px;">Phone</td>
-                                    <td>8819283612</td>
+                                    <td>{{ $customer->phone }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 250px;">Account Number</td>
-                                    <td>1238819283612</td>
+                                    <td>{{ $customer->account_number }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 250px;">About</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam labore hic
-                                        reprehenderit cum!.</td>
+                                    <td>{{ $customer->about }}</td>
                                 </tr>
                             </tbody>
                         </table>
