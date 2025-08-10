@@ -30,6 +30,12 @@ class CustomerController extends Controller
     public function store(CustomerStoreRequest $request)
     {
         $customer = new Customer();
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('', 'public');
+            $customer->image = '/uploads/' . $imagePath;
+        }
+
         $customer->first_name = $request->input('first_name');
         $customer->last_name = $request->input('last_name');
         $customer->email = $request->input('email');
