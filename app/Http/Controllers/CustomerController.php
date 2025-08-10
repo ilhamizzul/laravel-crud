@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerStoreRequest;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -28,7 +29,22 @@ class CustomerController extends Controller
      */
     public function store(CustomerStoreRequest $request)
     {
-        dd($request->all());
+        $customer = new Customer();
+        $customer->first_name = $request->input('first_name');
+        $customer->last_name = $request->input('last_name');
+        $customer->email = $request->input('email');
+        $customer->phone = $request->input('phone');
+        $customer->account_number = $request->input('account_number');
+        $customer->about = $request->input('about');
+
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('customers', 'public');
+        //     $customer->image = '/storage/' . $imagePath;
+        // }
+
+        $customer->save();
+
+        return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
     }
 
     /**

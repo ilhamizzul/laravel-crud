@@ -36,18 +36,18 @@ class CustomerStoreRequest extends FormRequest
                 'required',
                 'email',
                 'max:255',
-                //'unique:customers,email'
+                'unique:customers,email'
             ],
             'phone' => [
                 'required',
-                'string',
-                'max:20'
+                'numeric',
+                'digits_between:10,12',
+                'unique:customers,phone'
             ],
             'account_number' => [
                 'required',
                 'numeric',
                 'digits_between:5,10',
-                //'max:20'
             ],
             'about' => [
                 'nullable',

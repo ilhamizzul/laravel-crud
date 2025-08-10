@@ -3,6 +3,12 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <h3>Customers</h3>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -33,34 +39,34 @@
                     <table class="table table-bordered" style="border: 1px solid #dddddd">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Date of Birth</th>
-                            <th scope="col">Phone Number</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">BAN</th>
-                            <th scope="col">Action</th>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Date of Birth</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">BAN</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <th scope="row">1</th>
-                            <td>Jhone</td>
-                            <td>Deo</td>
-                            <td>7-7-2000</td>
-                            <td>881-6929-0200</td>
-                            <td>jhone@gmail.com</td>
-                            <td>1902982829282</td>
-                            <td>
-                                <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-edit"></i></a>
-                                <a href="/customer-details.html" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-eye"></i></a>
-                                <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="fas fa-trash-alt"></i></a>
-                            </td>
+                                <th scope="row">1</th>
+                                <td>Jhone</td>
+                                <td>Deo</td>
+                                <td>7-7-2000</td>
+                                <td>881-6929-0200</td>
+                                <td>jhone@gmail.com</td>
+                                <td>1902982829282</td>
+                                <td>
+                                    <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-edit"></i></a>
+                                    <a href="/customer-details.html" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-eye"></i></a>
+                                    <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="fas fa-trash-alt"></i></a>
+                                </td>
                             </tr>
 
                         </tbody>
-                        </table>
+                    </table>
                 </div>
             </div>
         </div>

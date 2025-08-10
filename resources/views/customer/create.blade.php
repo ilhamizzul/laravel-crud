@@ -3,11 +3,6 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <h3>Customers</h3>
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
