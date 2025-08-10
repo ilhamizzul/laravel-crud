@@ -50,21 +50,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Jhone</td>
-                                <td>Deo</td>
-                                <td>7-7-2000</td>
-                                <td>881-6929-0200</td>
-                                <td>jhone@gmail.com</td>
-                                <td>1902982829282</td>
-                                <td>
-                                    <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-edit"></i></a>
-                                    <a href="/customer-details.html" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-eye"></i></a>
-                                    <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach ($customers as $customer)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $customer->first_name }}</td>
+                                    <td>{{ $customer->last_name }}</td>
+                                    <td>{{ $customer->date_of_birth }}</td>
+                                    <td>{{ $customer->phone }}</td>
+                                    <td>{{ $customer->email }}</td>
+                                    <td>{{ $customer->account_number }}</td>
+                                    <td>
+                                        <a href="{{ route('customers.edit', $customer->id) }}" class="ms-1 me-1" style="color: #2c2c2c;"><i class="far fa-edit"></i></a>
+                                        <a href="{{ route('customers.show', $customer->id) }}" class="ms-1 me-1" style="color: #2c2c2c;"><i class="far fa-eye"></i></a>
+                                        <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-link ms-1 me-1" style="color: #2c2c2c; padding: 0;"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
