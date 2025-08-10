@@ -62,7 +62,7 @@
                                     <td>
                                         <a href="{{ route('customers.edit', $customer->id) }}" class="ms-1 me-1" style="color: #2c2c2c;"><i class="far fa-edit"></i></a>
                                         <a href="{{ route('customers.show', $customer->id) }}" class="ms-1 me-1" style="color: #2c2c2c;"><i class="far fa-eye"></i></a>
-                                        <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display:inline;">
+                                        <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this customer? This action cannot be undone.')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-link ms-1 me-1" style="color: #2c2c2c; padding: 0;"><i class="fas fa-trash-alt"></i></button>
