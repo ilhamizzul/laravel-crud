@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerStoreRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerController extends Controller
 {
@@ -46,11 +47,6 @@ class CustomerController extends Controller
         $customer->account_number = $request->input('account_number');
         $customer->about = $request->input('about');
 
-        // if ($request->hasFile('image')) {
-        //     $imagePath = $request->file('image')->store('customers', 'public');
-        //     $customer->image = '/storage/' . $imagePath;
-        // }
-
         $customer->save();
 
         return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
@@ -85,6 +81,19 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+
+        if ($customer->image && $customer->image !== '/default-images/ben.png') {
+            $imagePath = str_replace('/uploads/', '', $customer->image);
+
+            // Delete the file from public storage
+            if (Storage::disk('public')->exists($imagePath)) {
+                Storage::disk('public')->delete($imagePath);
+            }
+        }
+
+        $customer->delete();
+
+        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');
     }
 }
