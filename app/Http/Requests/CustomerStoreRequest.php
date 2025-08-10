@@ -14,46 +14,13 @@ class CustomerStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => [
-                'nullable',
-                'image',
-                'mimes:jpeg,png,jpg,gif,svg',
-                'max:2048'
-            ],
-            'first_name' => [
-                'required',
-                'string',
-                'min:2',
-                'max:50'
-            ],
-            'last_name' => [
-                'required',
-                'string',
-                'min:2',
-                'max:50'
-            ],
-            'email' => [
-                'required',
-                'email',
-                'max:255',
-                'unique:customers,email'
-            ],
-            'phone' => [
-                'required',
-                'numeric',
-                'digits_between:10,12',
-                'unique:customers,phone'
-            ],
-            'account_number' => [
-                'required',
-                'numeric',
-                'digits_between:5,10',
-            ],
-            'about' => [
-                'nullable',
-                'string',
-                'max:500'
-            ],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'first_name' => ['required', 'string', 'min:2', 'max:50'],
+            'last_name' => ['required', 'string', 'min:2', 'max:50'],
+            'email' => ['required', 'email', 'max:255', 'unique:customers,email'],
+            'phone' => ['required', 'numeric', 'digits_between:10,12', 'unique:customers,phone'],
+            'account_number' => ['required', 'numeric', 'digits_between:5,10'],
+            'about' => ['nullable', 'string', 'max:500'],
         ];
     }
 }
