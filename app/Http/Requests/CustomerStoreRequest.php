@@ -17,6 +17,7 @@ class CustomerStoreRequest extends FormRequest
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'first_name' => ['required', 'string', 'min:2', 'max:50'],
             'last_name' => ['required', 'string', 'min:2', 'max:50'],
+            'date_of_birth' => ['required', 'date', 'before:today'],
             'email' => ['required', 'email', 'max:255', 'unique:customers,email'],
             'phone' => ['required', 'numeric', 'digits_between:10,12', 'unique:customers,phone'],
             'account_number' => ['required', 'numeric', 'digits_between:5,10'],

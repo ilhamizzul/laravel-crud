@@ -40,6 +40,7 @@ class CustomerController extends Controller
 
         $customer->first_name = $request->input('first_name');
         $customer->last_name = $request->input('last_name');
+        $customer->date_of_birth = $request->input('date_of_birth');
         $customer->email = $request->input('email');
         $customer->phone = $request->input('phone');
         $customer->account_number = $request->input('account_number');

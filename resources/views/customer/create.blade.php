@@ -42,6 +42,12 @@
                                     <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
                                 </div>
                             </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <label for="">Date of Birth</label>
+                                    <input type="date" class="form-control" name="date_of_birth" value="{{ old('date_of_birth') }}">
+                                </div>
+                            </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label for="">Email</label>
