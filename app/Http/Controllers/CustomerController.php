@@ -13,9 +13,15 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::all();
+        $search = $request->input('search');
+        $customers = Customer::when($search, function ($query, $search) {
+            return $query->where('first_name', 'like', "%{$search}%")
+                         ->orWhere('last_name', 'like', "%{$search}%")
+                         ->orWhere('email', 'like', "%{$search}%")
+                         ->orWhere('phone', 'like', "%{$search}%");
+        })->get();
 
         return view('customer.index', compact('customers'));
     }
