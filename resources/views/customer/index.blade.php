@@ -26,10 +26,12 @@
                     <div class="col-md-2">
 
                         <div class="input-group mb-3">
-                            <select class="form-select" name="" id="">
-                                <option value="">Newest to Old</option>
-                                <option value="">Old to Newest</option>
-                            </select>
+                            <form action="{{ route('customers.index') }}" method="GET" class="form-order">
+                                <select class="form-select" name="sort" id="" onchange="this.form.submit()">
+                                    <option @selected(request('sort') === 'desc') value="desc">Newest to Oldest</option>
+                                    <option @selected(request('sort') === 'asc') value="asc">Oldest to Newest</option>
+                                </select>
+                            </form>
                         </div>
                     </div>
                     </div>
@@ -55,7 +57,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $customer->first_name }}</td>
                                     <td>{{ $customer->last_name }}</td>
-                                    <td>{{ $customer->date_of_birth }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($customer->date_of_birth)->format('Y-m-d') }}</td>
                                     <td>{{ $customer->phone }}</td>
                                     <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->account_number }}</td>
