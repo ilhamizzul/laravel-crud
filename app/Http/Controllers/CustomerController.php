@@ -124,4 +124,16 @@ class CustomerController extends Controller
 
         return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');
     }
+
+    public function trashIndex(Request $request)
+    {
+        $search = $request->input('search');
+        $customers = Customer::when($search, function ($query, $search) {
+            return $query->where('first_name', 'like', "%{$search}%")
+                         ->orWhere('last_name', 'like', "%{$search}%")
+                         ->orWhere('email', 'like', "%{$search}%")
+                         ->orWhere('phone', 'like', "%{$search}%");
+        })->get();
+        return view('customer.trash', compact('customers'));
+    }
 }
